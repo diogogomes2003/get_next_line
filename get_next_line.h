@@ -6,24 +6,27 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:21:19 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/05/03 12:27:32 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/05/08 09:32:06 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdlib.h>
-# include <unistd.h>
+# ifndef BUFFER_SIZE
+#  define  BUFFER_SIZE 1234
+# endif
 
-void	*ft_memcpy(void	*dest,	const void	*src, size_t	n);
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+
 char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *src);
-char	*ft_substr(char	const *s, unsigned int start, size_t len);
-char	*ft_strchr(char const *s, int c);
-size_t	ft_strlen(const	char	*s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
+char	*ft_read_and_join(int fd, char *temp);
+char	*ft_strjoin(char *temp, char *buffer);
+char	*ft_get_line(char *temp);
+char	*ft_new_temp(char *temp);
+char	*ft_strchr(char *s, int line_break);
+size_t	ft_strlen(char *s);
 
 #endif

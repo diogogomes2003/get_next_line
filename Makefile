@@ -6,7 +6,7 @@
 #    By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 11:17:18 by dduarte-          #+#    #+#              #
-#    Updated: 2023/05/03 11:57:51 by dduarte-         ###   ########.fr        #
+#    Updated: 2023/05/08 09:36:12 by dduarte-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,20 +29,22 @@ GREEN	= \033[0;92m
 		${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJS}
-		@ar rcs ${NAME} ${OBJS} ${HEADER}
-		@echo "${GREEN}COMPILING : ${OBJS}, ${HEADER} to ${NAME}"
+		ar rcs ${NAME} ${OBJS} ${HEADER}
+		echo "${GREEN}COMPILING : ${OBJS}, ${HEADER} to ${NAME}"
 
 all:	${NAME}
 
 clean:
-		@${RM} ${OBJS}
-		@echo "${GREEN}FILES DELETED: ${OBJS}"
+		${RM} ${OBJS}
+		echo "${GREEN}FILES DELETED: ${OBJS}"
 
 fclean: clean
-		@${RM} ${NAME}
-		@echo "${GREEN}${NAME}"
+		${RM} ${NAME}
+		echo "${GREEN}${NAME}"
 
 re: fclean all
-		@echo "${GREEN}Rebuilding..."
+		echo "${GREEN}Rebuilding..."
 
 .PHONY: all clean fclean re
+
+.SILENT:
