@@ -6,7 +6,7 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:44:11 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/05/08 09:27:44 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/05/11 08:50:01 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,14 @@ char	*ft_get_line(char *temp)
 	char	*str;
 
 	i = 0;
-	if (!temp[i])
+	if (temp[i] == 0)
 		return (NULL);
 	while (temp[i] && temp[i] != '\n')
 		i++;
-	str = malloc(sizeof(char) * (i + 2));
+	if (temp[i] == '\0')
+		str = malloc(sizeof(char) * (i + 1));
+	else
+		str = malloc(sizeof(char) * (i + 2));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -90,10 +93,7 @@ char	*ft_get_line(char *temp)
 		i++;
 	}
 	if (temp[i] == '\n')
-	{
-		str[i] = temp[i];
-		i++;
-	}
+		str[i++] = '\n';
 	str[i] = '\0';
 	return (str);
 }
